@@ -134,9 +134,9 @@ jobs:
           chmod a+x deploy.azcli
           ./deploy.azcli -n testDeployment -g ${{ env.testResourceGroup }} -l ${{ env.location }}
       - name: Query public IP of VM
-        uses: azure/CLI@v1
+        uses: azure/CLI@v2
         with:
-          azcliversion: ${{ env.azCliVersion }}
+          azcliversion: 2.74.0 # testing https://github.com/Azure/azure-javaee-iaas/pull/41 ${{ env.azCliVersion }}
           inlineScript: |
             echo "query public ip"
             publicIP=$(az vm show \
